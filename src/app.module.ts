@@ -6,6 +6,7 @@ import * as LocalSession from 'telegraf-session-local';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { TaskEntity } from './task.entity';
+import { UserEntity } from './user.entity';
 
 const sessions = new LocalSession({ database: 'session_db.json' });
 
@@ -21,12 +22,12 @@ const sessions = new LocalSession({ database: 'session_db.json' });
       port: 5432,
       database: 'todo-app-tg-bot',
       username: 'postgres',
-      password: '',
+      password: 'postgres',
       entities: [join(__dirname, '**', '*.entity.{ts,js}')],
       migrations: [join(__dirname, '**', '*.migration.{ts,js}')],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([TaskEntity]),
+    TypeOrmModule.forFeature([TaskEntity, UserEntity]),
   ],
   providers: [AppService, AppUpdate],
 })

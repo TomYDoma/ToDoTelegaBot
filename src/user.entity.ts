@@ -1,15 +1,15 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ name: 'Task' })
-export class TaskEntity {
+@Entity({ name: 'User' })
+export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'text' })
-  name: string;
+  @Column({ type: 'timestamp' })
+  date: Date;
 
-  @Column({ default: false })
-  isCompleted: boolean;
+  @Column({ type: 'int' })
+  operationLabel: number;
 
   @Column({ type: 'text' })
   chatID: string;
